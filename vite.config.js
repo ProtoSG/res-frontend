@@ -4,5 +4,5 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base :  "http://ProtoSG.github.io/res-frontend",
+  base :  "https://protosg.github.io/res-frontend/",
 })
