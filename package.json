@@ -2,7 +2,7 @@
   "name": "res-frontend",
   "private": true,
   "version": "0.0.0",
-  "homepage" : "http://ProtoSG.github.io/restaurante",
+  "homepage" : "http://ProtoSG.github.io/res-frontend",
   "type": "module",
   "scripts": {
     "dev": "vite",
