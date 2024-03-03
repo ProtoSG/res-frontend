@@ -41,7 +41,7 @@ return (
             <div className='w-20 h-20 bg-bg-200 rounded-full flex justify-center items-center text-4xl shadow-inner shadow-gray-600 '>
                 <FaUserLarge />
             </div>
-            <span className='font-semibold text-text-100 mt-4'>{user.username}</span>
+            <span className='font-semibold text-text-100 mt-4'>{user?.username}</span>
         </div>
         <nav className='w-full'>
             <ul>

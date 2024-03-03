@@ -1,3 +1,5 @@
+const API = "https://res-backend-97rl.onrender.com"
+
 const postVenta = async ({id}) => {
     try{
         const fechaActual = new Date();
@@ -9,7 +11,7 @@ const postVenta = async ({id}) => {
             mesa_id: id
         }
 
-        const response = await fetch('http://localhost:3000/venta', {
+        const response = await fetch(`${API}/venta`, {
             method: 'POST',
             headers:{
                 'Content-Type' : 'application/json'
@@ -31,7 +33,7 @@ const postVenta = async ({id}) => {
 
 const getLastVenta = async ({mesa}) => {
     try{
-        const response = await fetch(`http://localhost:3000/venta/last/${mesa.id}`)
+        const response = await fetch(`${API}/venta/last/${mesa.id}`)
     
         if(!response.ok){
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -69,7 +71,7 @@ const getTotal = async () =>{
             date: fechaActual.toISOString().slice(0, 10),
         }
 
-        const response = await fetch(`http://localhost:3000/venta/total/${data.date}`);
+        const response = await fetch(`${API}/venta/total/${data.date}`);
 
         if (!response.ok){
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -88,7 +90,7 @@ const getTotal = async () =>{
 
 const putVenta = async ({id, estado, yape}) => {
     try{
-        const response = await fetch(`http://localhost:3000/venta/${id}`,{
+        const response = await fetch(`${API}/venta/${id}`,{
             method: 'PUT',
             headers:{
                 'Content-Type' : 'application/json'
@@ -109,7 +111,7 @@ const putVenta = async ({id, estado, yape}) => {
 
 const getDays = async () => {
     try{
-        const response = await fetch("http://localhost:3000/venta")
+        const response = await fetch(`${API}/venta`)
 
         if (!response.ok){
             throw new Error('Hubo un problema en la solicitud: ' + response.status);

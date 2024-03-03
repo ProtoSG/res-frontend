@@ -1,6 +1,8 @@
+const API = "https://res-backend-97rl.onrender.com"
+
 const getMesas = async () => {
     try {
-        const response = await fetch('http://localhost:3000/mesa');
+        const response = await fetch(`${API}/mesa`);
 
         if (!response.ok) {
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -21,7 +23,7 @@ const getMesas = async () => {
 const putMesa = async ({query}) => {
     try{
         const data = { name: query}
-        const response = await fetch('http://localhost:3000/mesa', {
+        const response = await fetch(`${API}/mesa`, {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

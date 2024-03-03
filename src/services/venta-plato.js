@@ -1,8 +1,10 @@
+const API = "https://res-backend-97rl.onrender.com"
+
 const postVentaPlato = async ({venta_id, plato_id, cantidad, sub_total}) => {
     try{
         const data = {venta_id, plato_id, cantidad, sub_total}
 
-        const response = await fetch("http://localhost:3000/venta-plato", {
+        const response = await fetch(`${API}/venta-plato`, {
             method: "POST",
             headers:{
                 'Content-Type' : 'application/json'
@@ -24,7 +26,7 @@ const postVentaPlato = async ({venta_id, plato_id, cantidad, sub_total}) => {
 
 const getVentaPlatoById = async ({id}) =>{
     try{
-        const response = await fetch(`http://localhost:3000/venta-plato/${id}`)
+        const response = await fetch(`${API}/venta-plato/${id}`)
 
         if (!response.ok) {
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -50,7 +52,7 @@ const getVentaPlatoById = async ({id}) =>{
 const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     try{
         const data = {idPlato}
-        const response = await fetch(`http://localhost:3000/venta-plato/${idVentaPlato}`, {
+        const response = await fetch(`${API}/venta-plato/${idVentaPlato}`, {
             method: 'DELETE',
             headers:{
                 'Content-Type' : 'application/json'
@@ -70,5 +72,5 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-export { deleteVentaPlato, getVentaPlatoById, postVentaPlato };
+export { deleteVentaPlato, getVentaPlatoById, postVentaPlato }
 

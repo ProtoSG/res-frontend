@@ -1,6 +1,8 @@
+const API = "https://res-backend-97rl.onrender.com"
+
 const login = async ( username, password) => {
     try {
-        const response = await fetch('http://localhost:3000/login/administrador', {
+        const response = await fetch(`${API}/login/administrador`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

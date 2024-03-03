@@ -1,3 +1,5 @@
+const API = "https://res-backend-97rl.onrender.com"
+
 const postPlato = async ({query}) => {
     try{
         const data = {
@@ -5,7 +7,7 @@ const postPlato = async ({query}) => {
             precio : query.price
         }
 
-        const response = await fetch("http://localhost:3000/plato", {
+        const response = await fetch(`${API}/plato`, {
             method: "POST",
             headers: {
                 'Content-Type' : 'application/json'
@@ -35,7 +37,7 @@ const postPlato = async ({query}) => {
 //Por el momenot inservible
 const getLastPlato = async () => {
     try{
-        const response = await fetch("http://localhost:3000/plato/last")
+        const response = await fetch(`${API}/plato/last`)
         
         if(!response.ok){
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -67,7 +69,7 @@ const getRankPlato = async () => {
             date: fechaActual.toISOString().slice(0, 10),
         }
 
-        const response =  await fetch(`http://localhost:3000/plato/rank/${data.date}`)
+        const response =  await fetch(`${API}/plato/rank/${data.date}`)
 
         if(!response.ok){
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
@@ -86,4 +88,5 @@ const getRankPlato = async () => {
     }
 }
 
-export { getLastPlato, getRankPlato, postPlato };
+export { getLastPlato, getRankPlato, postPlato }
+
