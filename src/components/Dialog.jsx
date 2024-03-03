@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import lastVenta from "../hooks/lastVenta";
 import { postVenta, putVenta } from "../services/venta";
 import Button from "./Button";
+import ButtonPay from "./ButtonPay";
 import RealizarPago from "./RealizarPago";
 import RegistrarPlato from './RegistrarPlato';
 import Table from './Table';
@@ -51,7 +52,7 @@ export default function Dialog({mesa}){
         <span className="text-xl font-bold  text-text-200">Total: {total}</span>
     
         <div className="flex w-full gap-4">
-            <Button onClick={handlePago} name = {"Pagar"} bgColor />
+            <ButtonPay onClick={handlePago} name = {"Pagar"} bgColor />
             <Button onClick={handleOpen} name = {"Abrir"}/>
         </div>
         <dialog

@@ -5,6 +5,7 @@ export default function useVentaPlato({id}) {
     const [ventaPlato, setVentaPlato] = useState([])
     const [loadingVentaPlato, setLoadingVentaPlato] = useState(false)
     const [errorVentaPlato, setErrorVentaPlato] = useState(null)
+    console.log({id})
     useEffect(() => {
         async function fetchVentaPlato(){
             try{
