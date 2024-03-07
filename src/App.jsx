@@ -16,7 +16,6 @@ function App() {
       }
   }, [])
 
-  console.log("user",user)
   return (
     <div className='min-h-dvh bg-bg-100 flex items-center'>
       <Routes>

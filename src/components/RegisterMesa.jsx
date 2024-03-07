@@ -9,10 +9,12 @@ export default function RegisterMesa() {
 
     const handleChange = (e) => {
         setQuery(e.target.value);
+        
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit =  async() => {
         await putMesa({query});
+        window.location.reload()
     }
 
   return (

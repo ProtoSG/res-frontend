@@ -5,7 +5,6 @@ import ChartComponent from './ChartComponent';
 export default function Grafica() {
 
     const { dayData, loadingDayData, errorDayData} = UseDays()
-    console.log(dayData)
     const weekData = [
         { time: '2016-07-18', value: 26.10 },
         { time: '2016-07-25', value: 26.19 },

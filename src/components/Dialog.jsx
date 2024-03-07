@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import lastVenta from "../hooks/lastVenta";
+import useVentaPlato from "../hooks/useVentaPlato";
 import { postVenta, putVenta } from "../services/venta";
 import Button from "./Button";
 import ButtonPay from "./ButtonPay";
@@ -11,9 +12,13 @@ import Table from './Table';
 export default function Dialog({mesa}){
     
     const [active, setActive] = useState(false);
-    const [activeVenta, setActiveVenta] = useState(false)
-    const { data: venta, loading: loadingVenta, error: errorVenta} = lastVenta({mesa})
+    const { data: venta, loading: loadingVenta, error: errorVenta, fetchVenta} = lastVenta({mesa})
     const [total, setTotal] = useState(0)
+    
+    const id = venta?.id
+
+    const { ventaPlato, loadingVentaPlato, errorVentaPlato, fetchVentaPlato } = useVentaPlato({id})
+    
 
     useEffect(() => {
         if(venta?.estado === 0 || venta?.total === null || venta === null){
@@ -28,10 +33,9 @@ export default function Dialog({mesa}){
             dialog.showModal();
             setActive(true);
             const id = mesa.id
-            if(!activeVenta){
-                if(!venta?.estado) postVenta({id})
-                setActiveVenta(true)
-            }
+            
+            if(!venta?.estado) await postVenta({id})
+            await fetchVenta()
         }
     }
 
@@ -66,9 +70,14 @@ export default function Dialog({mesa}){
                 className='absolute right-5 top-5 text-3xl hover:scale-150 text-text-200 hover:text-primary-200 hover:cursor-pointer transition-all'>
                     <IoClose/>
             </span>
-            <Table venta={venta}/>
-            <RegistrarPlato venta={venta}/> 
-            <RealizarPago venta={venta}/>
+            <Table
+                venta={venta}
+                ventaPlato={ventaPlato}
+                loadingVentaPlato={loadingVentaPlato}
+                errorVentaPlato={errorVentaPlato}
+            />
+            <RegistrarPlato venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} /> 
+            <RealizarPago venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} handleClose={handleClose}/>
         </dialog>
         </>
     )

@@ -49,7 +49,7 @@ return (
                 <ItemHeader  name='Dashboard' link='dashboard' icon={<IoStatsChart/>}/>
             </ul>
         </nav>
-        <a  href='/login' onClick={logOut} className='flex items-center text-xl w-full hover:bg-primary-100 rounded-2xl '>
+        <a  href='/res-frontend/login' onClick={logOut} className='flex items-center text-xl w-full hover:bg-primary-100 rounded-2xl '>
             <SpanItem icon={<RiLogoutBoxLine/>}/>
             Logout
         </a>

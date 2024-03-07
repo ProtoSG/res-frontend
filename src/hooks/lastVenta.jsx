@@ -6,27 +6,24 @@ export default function lastVenta({mesa}) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     
-    useEffect(() => {
-        async function fetchVenta(){
-            try{
-                setLoading(true);
-                setError(null)
-                const venta = await getLastVenta({mesa});
-                setData(venta)
-            } catch (e){
-                setError(e.message)
-            }finally{
-                setLoading(false)
-            }
+    async function fetchVenta(){
+        try{
+            setLoading(true);
+            setError(null)
+            const venta = await getLastVenta({mesa});
+            setData(venta)
+        } catch (e){
+            setError(e.message)
+        }finally{
+            setLoading(false)
         }
+    }
 
-        const intervalId = setInterval(() =>{
-            fetchVenta();
-        }, 100)
+    useEffect(() => {
 
+        fetchVenta();
 
-        return () => clearInterval(intervalId)
     }, [mesa])
 
-    return {data, loading, error}
+    return {data, loading, error, fetchVenta}
 }

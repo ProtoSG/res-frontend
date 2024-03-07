@@ -3,12 +3,15 @@ import { putVenta } from '../services/venta'
 import Button from './Button'
 import Input from './Input'
 
-export default function RealizarPago({venta}) {
+export default function RealizarPago({venta, fetchVenta, fetchVentaPlato, handleClose}) {
   
   const [query, setQuery] = useState(0)
 
   const handleSubmit = async(e) => {
     await putVenta({estado:false, id:venta.id, yape: query})
+    fetchVenta()
+    fetchVentaPlato()
+    handleClose()
   }
 
   const handleChange = (e) => {
