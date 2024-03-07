@@ -1,4 +1,3 @@
-import React from 'react'
 import BalanceTotal from '../components/BalanceTotal'
 import Grafica from '../components/Grafica'
 import Pagos from '../components/Pagos'

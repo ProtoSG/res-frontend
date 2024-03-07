@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { putVenta } from '../services/venta'
 import Button from './Button'
 import Input from './Input'
@@ -7,7 +7,7 @@ export default function RealizarPago({venta, fetchVenta, fetchVentaPlato, handle
   
   const [query, setQuery] = useState(0)
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async() => {
     await putVenta({estado:false, id:venta.id, yape: query})
     fetchVenta()
     fetchVentaPlato()

@@ -1,10 +1,10 @@
 import { MdDelete } from "react-icons/md";
 import { putVenta } from "../services/venta";
-import { deleteVentaPlato } from "../services/venta-plato";
+import { deleteVentaPlato } from '../services/venta-plato';
 
 export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaPlato}){
 
-    const id = venta?.id
+    
 
    
     const handleDelete = async(orden) => {
@@ -27,6 +27,7 @@ export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaP
                 <tbody className="">
                    {
                         laodingVentaPlato ? <p>Cargando</p> 
+                        :errorVentaPlato ? <p>Error...</p>
                         :ventaPlato.map((orden, index) => (
                             <tr key={index} className="border-t-2 text-center">
                                 <td className="py-4">{orden.cantidad}</td>

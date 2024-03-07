@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import lastVenta from "../hooks/lastVenta";
+import useLastVenta from "../hooks/useLastVenta";
 import useVentaPlato from "../hooks/useVentaPlato";
 import { postVenta, putVenta } from "../services/venta";
 import Button from "./Button";
@@ -12,7 +12,7 @@ import Table from './Table';
 export default function Dialog({mesa}){
     
     const [active, setActive] = useState(false);
-    const { data: venta, loading: loadingVenta, error: errorVenta, fetchVenta} = lastVenta({mesa})
+    const { data: venta, fetchVenta} = useLastVenta({mesa})
     const [total, setTotal] = useState(0)
     
     const id = venta?.id
@@ -47,7 +47,7 @@ export default function Dialog({mesa}){
         }
     }
 
-    const handlePago = async(e) => {
+    const handlePago = async() => {
         await putVenta({estado:false, id:venta.id, yape: 0})
       }
 
@@ -76,7 +76,7 @@ export default function Dialog({mesa}){
                 loadingVentaPlato={loadingVentaPlato}
                 errorVentaPlato={errorVentaPlato}
             />
-            <RegistrarPlato venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} /> 
+            <RegistrarPlato venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} />
             <RealizarPago venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} handleClose={handleClose}/>
         </dialog>
         </>

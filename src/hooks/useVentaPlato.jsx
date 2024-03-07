@@ -23,7 +23,7 @@ export default function useVentaPlato({ id }) {
     useEffect(() => {
 
         fetchVentaPlato();
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     return { ventaPlato, loadingVentaPlato, errorVentaPlato,  fetchVentaPlato };

@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import { getCurrentUser } from './services/login';
 function App() {
 
-  const[user, setUser] = useState(undefined) 
+  const[user, setUser] = useState(undefined)
 
   useEffect(() => {
       const userLocal = getCurrentUser()

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { putMesa } from '../services/mesa';
 import Button from './Button';
 import Input from './Input';

@@ -1,4 +1,3 @@
-import React from 'react'
 import UseTotal from '../hooks/useTotal'
 
 export default function BalanceTotal() {
@@ -9,6 +8,7 @@ export default function BalanceTotal() {
     <section className='py-8 px-8 bg-gradient-to-r from-primary-100 to-primary-200 row-span-2 rounded-2xl shadow-inner'>
         {
             loadingTotal ? (<p>Cargando...</p>)
+            :errorTotal ? <p>Error...</p>
             :(
                 <>
                 <h2 className='text-accent-200 text-2xl text-bold mb-10 font-semibold'>Balance Total</h2>

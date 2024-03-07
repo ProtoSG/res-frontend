@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaUserLarge } from "react-icons/fa6";
 import { GoHome } from "react-icons/go";
 import { IoStatsChart } from "react-icons/io5";

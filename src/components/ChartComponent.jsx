@@ -1,5 +1,5 @@
 import { ColorType, createChart } from 'lightweight-charts';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function SimpleSwitcher({ items, activeItem, onItemClicked }) {
     return (
@@ -7,7 +7,7 @@ function SimpleSwitcher({ items, activeItem, onItemClicked }) {
             {items.map((item, index) => (
                 <button
                     key={index}
-                    className={`transition-all border-2 border-primary-100 px-8 py-2 rounded-2xl text-lg 
+                    className={`transition-all border-2 border-primary-100 px-8 py-2 rounded-2xl text-lg
                     hover:scale-110
                     
                     ${
@@ -80,7 +80,7 @@ export default function ChartComponent({intervals, seriesesData}) {
         }
 
         chart?.timeScale().fitContent();
-    }, [activeInterval, chart, areaSeries]);
+    }, [activeInterval, chart, areaSeries, seriesesData]);
 
     const handleItemClicked = (item) => {
         if (item !== activeInterval) {

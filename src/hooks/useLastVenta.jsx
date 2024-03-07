@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLastVenta } from "../services/venta";
 
-export default function lastVenta({mesa}) {
+export default function useLastVenta({mesa}) {
     const [data, setData] = useState({})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -22,7 +22,7 @@ export default function lastVenta({mesa}) {
     useEffect(() => {
 
         fetchVenta();
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mesa])
 
     return {data, loading, error, fetchVenta}

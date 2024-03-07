@@ -1,4 +1,3 @@
-import React from 'react';
 import UseDays from '../hooks/useVenta';
 import ChartComponent from './ChartComponent';
 
@@ -34,6 +33,7 @@ export default function Grafica() {
         <section className='p-2 bg-bg-200 row-span-4 rounded-2xl shadow-inner'>
             {
                 loadingDayData ? <p>Cargando...</p>
+                : errorDayData ? <p>Error...</p>
                 :(
                     <ChartComponent intervals={intervals} seriesesData={seriesesData}/>
                 )

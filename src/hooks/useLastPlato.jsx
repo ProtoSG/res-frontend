@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getLastPlato } from '../services/plato'
 
-export default function lastPlato() {
+export default function useLastPlato() {
     const [plato, setPlato] = useState({})
     const [loadingPlato, setLoadingPlato] = useState(false)
     const [errorPlato, setErrorPlato] = useState(null)

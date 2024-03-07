@@ -1,4 +1,3 @@
-import React from 'react'
 import UseTotal from '../hooks/useTotal'
 
 export default function Pagos() {
