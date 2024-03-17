@@ -72,5 +72,30 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-export { deleteVentaPlato, getVentaPlatoById, postVentaPlato }
+const updateVentaPlato = async({idVentaPlato, cantidad}) => {
+    try{
+        const data = {cantidad}
+        const response = await fetch(`${API}/venta-plato/${idVentaPlato}`, {
+            method: 'PUT',
+            headers:{
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        if(!response.ok){
+            throw new Error('Error al actualizar el registro de VentaPlato');
+        }
+
+        const res = await response.json();
+        console.log(res)
+    }catch(e){
+        console.error(e)
+        throw e
+    }
+}
+
+    
+
+export { deleteVentaPlato, getVentaPlatoById, postVentaPlato, updateVentaPlato }
 

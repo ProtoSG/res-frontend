@@ -1,6 +1,8 @@
+import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+
 import { putVenta } from "../services/venta";
-import { deleteVentaPlato } from '../services/venta-plato';
+import { deleteVentaPlato, updateVentaPlato } from '../services/venta-plato';
 
 export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaPlato, fetchVenta, fetchVentaPlato}){
 
@@ -13,6 +15,15 @@ export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaP
         fetchVentaPlato()
     }
     
+    const handleUpdate = async(orden) => {
+        const idVentaPlato = orden?.id
+        const cantidad = prompt('Ingrese la cantidad')
+        await putVenta({estado: null, id: venta.id})
+        await updateVentaPlato({idVentaPlato, cantidad})
+        fetchVenta()
+        fetchVentaPlato()
+    }
+
     return(
         <div className="relative h-[80%]">
          <table className="w-full text-text-200 text-2xl ">
@@ -33,6 +44,7 @@ export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaP
                                 <td>{orden.plato.name}</td>
                                 <td>{orden.plato.price}</td>
                                 <td><span onClick={() => handleDelete(orden)} className="text-red-600 hover:text-red-400 text-2xl hover:scale-150 transition-all cursor-pointer inline-block "><MdDelete /></span></td>
+                                <td><span onClick={() => handleUpdate(orden)} className="text-green-600 hover:text-green-400 text-2xl hover:scale-150 transition-all cursor-pointer inline-block "><FaPen /></span></td>
                             </tr>
                         ))
                     }
