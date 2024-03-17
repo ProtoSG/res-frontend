@@ -82,7 +82,6 @@ const updateVentaPlato = async({idVentaPlato, cantidad, sub_total}) => {
             },
             body: JSON.stringify(data)
         })
-
         if(!response.ok){
             throw new Error('Error al actualizar el registro de VentaPlato');
         }

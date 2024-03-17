@@ -19,8 +19,8 @@ export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaP
         const idVentaPlato = orden?.id
         const cantidad = prompt('Ingrese la cantidad')
         const sub_total = orden?.plato.price * cantidad
-        await putVenta({estado: null, id: venta.id})
         await updateVentaPlato({idVentaPlato, cantidad, sub_total})
+        await putVenta({estado: null, id: venta.id})
         fetchVenta()
         fetchVentaPlato()
     }
