@@ -2,16 +2,15 @@ import { MdDelete } from "react-icons/md";
 import { putVenta } from "../services/venta";
 import { deleteVentaPlato } from '../services/venta-plato';
 
-export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaPlato}){
+export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaPlato, fetchVenta, fetchVentaPlato}){
 
-    
-
-   
     const handleDelete = async(orden) => {
         const idVentaPlato = orden?.id
         const idPlato = orden?.plato.id
         await deleteVentaPlato({idVentaPlato, idPlato})
         await putVenta({estado: null, id: venta.id})
+        fetchVenta()
+        fetchVentaPlato()
     }
     
     return(

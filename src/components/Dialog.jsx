@@ -49,7 +49,9 @@ export default function Dialog({mesa}){
 
     const handlePago = async() => {
         await putVenta({estado:false, id:venta.id, yape: 0})
-      }
+        fetchVenta()
+        fetchVentaPlato()
+    }
 
     return(
         <>
@@ -75,6 +77,8 @@ export default function Dialog({mesa}){
                 ventaPlato={ventaPlato}
                 loadingVentaPlato={loadingVentaPlato}
                 errorVentaPlato={errorVentaPlato}
+                fetchVenta={fetchVenta}
+                fetchVentaPlato={fetchVentaPlato}
             />
             <RegistrarPlato venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} />
             <RealizarPago venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} handleClose={handleClose}/>

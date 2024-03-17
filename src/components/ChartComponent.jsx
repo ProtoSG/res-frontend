@@ -28,8 +28,6 @@ export default function ChartComponent({intervals, seriesesData}) {
     const [chart, setChart] = useState(null);
     const [areaSeries, setAreaSeries] = useState(null);
 
-    
-
     useEffect(() => {
         const chartInstance = createChart(chartContainerRef.current, {
             layout: {
@@ -76,7 +74,7 @@ export default function ChartComponent({intervals, seriesesData}) {
 
     useEffect(() => {
         if (chart && areaSeries) {
-            areaSeries.setData(seriesesData.get(activeInterval));
+            areaSeries.setData(seriesesData?.get(activeInterval));
         }
 
         chart?.timeScale().fitContent();

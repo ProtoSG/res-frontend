@@ -121,7 +121,7 @@ const getDays = async () => {
         
         return ventas?.map(venta =>({
             time : venta.venta_date.substring(0, 10),
-            value : venta.venta_total
+            value : venta.venta_total ?? 0
         }))
 
     }catch(e){
