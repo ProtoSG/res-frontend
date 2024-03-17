@@ -18,6 +18,14 @@ export default function Table({venta, ventaPlato, laodingVentaPlato, errorVentaP
     const handleUpdate = async(orden) => {
         const idVentaPlato = orden?.id
         const cantidad = prompt('Ingrese la cantidad')
+        try {
+            if(cantidad === null) return
+            if(cantidad === '') return alert('Ingrese un valor')
+            if(isNaN(cantidad)) return alert('Ingrese un valor numerico')
+            if(cantidad < 1) return alert('Ingrese un valor mayor a 0')
+        } catch (e) {
+            console.error(e)
+        }
         const sub_total = orden?.plato.price * cantidad
         await updateVentaPlato({idVentaPlato, cantidad, sub_total})
         await putVenta({estado: null, id: venta.id})
