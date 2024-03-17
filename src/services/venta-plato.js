@@ -72,9 +72,9 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-const updateVentaPlato = async({idVentaPlato, cantidad}) => {
+const updateVentaPlato = async({idVentaPlato, cantidad, sub_total}) => {
     try{
-        const data = {cantidad}
+        const data = {cantidad, sub_total}
         const response = await fetch(`${API}/venta-plato/${idVentaPlato}`, {
             method: 'PUT',
             headers:{
