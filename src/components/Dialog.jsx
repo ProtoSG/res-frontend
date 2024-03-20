@@ -63,7 +63,7 @@ export default function Dialog({mesa}){
         </div>
         <dialog
             id={`${mesa?.id}`}
-            className={`h-[80dvh] w-full bg-bg-200 rounded-2xl px-10 pt-3 pb-20 backdrop:bg-[rgba(25,25,25,0.9)]
+            className={` w-full bg-bg-200 rounded-2xl px-10 py-3  backdrop:bg-[rgba(25,25,25,0.9)]
             transition-all duration-300 ${active ? "opacity-100" : "opacity-0 "}
             overflow-hidden  
             `}>
@@ -80,6 +80,10 @@ export default function Dialog({mesa}){
                 fetchVenta={fetchVenta}
                 fetchVentaPlato={fetchVentaPlato}
             />
+            <div className="text-center border-t-4  border-primary-100  text-primary-100 px-20 flex justify-between items-center">
+                    <span className="text-2xl py-4 font-semibold" colSpan="2">Total: </span>
+                    <span className=" text-3xl font-bold" >S/ {venta?.total === null ? 0 : venta?.total} </span>
+            </div>
             <RegistrarPlato venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} />
             <RealizarPago venta={venta} fetchVenta={fetchVenta} fetchVentaPlato={fetchVentaPlato} handleClose={handleClose}/>
         </dialog>
