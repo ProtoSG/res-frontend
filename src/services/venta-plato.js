@@ -72,9 +72,9 @@ const deleteVentaPlato = async({idVentaPlato, idPlato}) => {
     }
 }
 
-const updateVentaPlato = async({idVentaPlato, cantidad}) => {
+const updateVentaPlato = async({idVentaPlato, cantidad, sub_total}) => {
     try{
-        const data = {cantidad}
+        const data = {cantidad, sub_total}
         const response = await fetch(`${API}/venta-plato/${idVentaPlato}`, {
             method: 'PUT',
             headers:{
@@ -82,7 +82,6 @@ const updateVentaPlato = async({idVentaPlato, cantidad}) => {
             },
             body: JSON.stringify(data)
         })
-
         if(!response.ok){
             throw new Error('Error al actualizar el registro de VentaPlato');
         }
