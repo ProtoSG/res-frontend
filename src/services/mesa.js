@@ -1,46 +1,46 @@
-const API = "https://res-backend-97rl.onrender.com"
+const API = "http://localhost:3000"
 
 const getMesas = async () => {
-    try {
-        const response = await fetch(`${API}/mesa`);
+  try {
+    const response = await fetch(`${API}/mesa`);
 
-        if (!response.ok) {
-            throw new Error('Hubo un problema en la solicitud: ' + response.status);
-        }
-        const data = await response.json();
-        
-        return data?.map(mesa => ({
-            id: mesa.mesa_id,
-            name : mesa.mesa_name
-        }))
-
-    } catch (error) {
-        console.error(error);
-        throw error
+    if (!response.ok) {
+      throw new Error('Hubo un problema en la solicitud: ' + response.status);
     }
+    const data = await response.json();
+
+    return data?.map(mesa => ({
+      id: mesa.mesa_id,
+      name: mesa.mesa_name
+    }))
+
+  } catch (error) {
+    console.error(error);
+    throw error
+  }
 }
 
-const putMesa = async ({query}) => {
-    try{
-        const data = { name: query}
-        const response = await fetch(`${API}/mesa`, {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+const putMesa = async ({ query }) => {
+  try {
+    const data = { name: query }
+    const response = await fetch(`${API}/mesa`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
 
-        if(!response.ok){
-            throw new Error("Hubo un problema al enviar la  solicitud " + response.status );
-        }
-
-        const responseData = await response.json();
-        console.log('Respuesta del servidor:', responseData);
-    }catch (e){
-        console.error(e)
-        throw e
+    if (!response.ok) {
+      throw new Error("Hubo un problema al enviar la  solicitud " + response.status);
     }
+
+    const responseData = await response.json();
+    console.log('Respuesta del servidor:', responseData);
+  } catch (e) {
+    console.error(e)
+    throw e
+  }
 }
 
 export { getMesas, putMesa };

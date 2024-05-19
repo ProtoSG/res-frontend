@@ -1,33 +1,33 @@
-const API = "https://res-backend-97rl.onrender.com"
+const API = "http://localhost:3000"
 
-const postPlato = async ({query}) => {
-    try{
+const postPlato = async ({ query }) => {
+    try {
         const data = {
-            nombre : query.name,
-            precio : query.price
+            nombre: query.name,
+            precio: query.price
         }
 
         const response = await fetch(`${API}/plato`, {
             method: "POST",
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
 
-        if(!response.ok){
-            throw new Error("Hubo un problema al enviar la  solicitud " + response.status )
+        if (!response.ok) {
+            throw new Error("Hubo un problema al enviar la  solicitud " + response.status)
         }
 
         const responseData = await response.json();
 
         console.log('Respuesta del servidor:', responseData.response);
 
-        const  {id} = responseData;
-        
+        const { id } = responseData;
+
         return id;
 
-    } catch (e){
+    } catch (e) {
         console.error(e)
         throw e
     }
@@ -36,32 +36,32 @@ const postPlato = async ({query}) => {
 
 //Por el momenot inservible
 const getLastPlato = async () => {
-    try{
+    try {
         const response = await fetch(`${API}/plato/last`)
-        
-        if(!response.ok){
+
+        if (!response.ok) {
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
         }
 
         const plato = await response.json()
 
-        if(plato.length > 0 ){
-            return{
-                id : plato[0].plato_id,
-                name : plato[0].plato_name,
-                price : plato[0].plato_precio
+        if (plato.length > 0) {
+            return {
+                id: plato[0].plato_id,
+                name: plato[0].plato_name,
+                price: plato[0].plato_precio
             }
         }
 
         return null;
-    }catch (e){
+    } catch (e) {
         console.error(e)
         throw e
     }
 }
 
 const getRankPlato = async () => {
-    try{
+    try {
         const fechaActual = new Date();
         fechaActual.setHours(fechaActual.getHours() - 5);
 
@@ -69,20 +69,20 @@ const getRankPlato = async () => {
             date: fechaActual.toISOString().slice(0, 10),
         }
 
-        const response =  await fetch(`${API}/plato/rank/${data.date}`)
+        const response = await fetch(`${API}/plato/rank/${data.date}`)
 
-        if(!response.ok){
+        if (!response.ok) {
             throw new Error('Hubo un problema en la solicitud: ' + response.status);
         }
 
         const platos = await response.json()
 
-        return platos?.map(plato =>({
+        return platos?.map(plato => ({
             name: plato.plato_name,
-            count : plato.cantidad_total
+            count: plato.cantidad_total
         }))
 
-    } catch (e){
+    } catch (e) {
         console.error(e);
         throw e
     }
